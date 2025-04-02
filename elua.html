@@ -1,104 +1,557 @@
-ЛИЦЕНЗИОННОЕ СОГЛАШЕНИЕ
-Qiwi FANMarch 31, 2025
-**о порядке использования программного обеспечения QiwiFAN**  
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:3 | miqyz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #faf5ff;
+            --text-color: #3a2a5f;
+            --secondary-bg: #f0e5ff;
+            --accent-color: #8a63d2;
+            --accent-light: #b18bff;
+            --header-bg: #e9daff;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 12px rgba(138, 99, 210, 0.1);
+            --seal-shadow: 0 8px 20px rgba(138, 99, 210, 0.2);
+        }
+        
+        .dark-mode {
+            --bg-color: #1e103f;
+            --text-color: #f0e5ff;
+            --secondary-bg: #2d1a5f;
+            --accent-color: #b18bff;
+            --accent-light: #8a63d2;
+            --header-bg: #2a1355;
+            --card-bg: #3a2a5f;
+            --shadow: 0 4px 12px rgba(0,0,0,0.2);
+            --seal-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        body {
+            font-family: 'Baloo 2', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            transition: all 0.5s ease;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .theme-switcher {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 100;
+            width: 50px;
+            height: 25px;
+            background: var(--secondary-bg);
+            border-radius: 50px;
+            padding: 4px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        
+        .theme-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--accent-light);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transform: translateX(0);
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .theme-switcher.active .theme-icon {
+            transform: translateX(25px);
+            background: var(--accent-color);
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: var(--header-bg);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.5s;
+            border: 2px dashed var(--accent-color);
+            margin-top: 10px;
+        }
+        
+        .logo {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+            border: 4px solid var(--accent-color);
+            animation: bounce 2s infinite;
+            transition: all 0.5s;
+            box-shadow: 0 8px 16px rgba(138, 99, 210, 0.3);
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        h1 {
+            color: var(--accent-color);
+            font-size: 2em;
+            margin: 15px 0 8px;
+            font-weight: 700;
+            transition: all 0.5s;
+            text-shadow: 2px 2px 0 rgba(138, 99, 210, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            opacity: 0.9;
+            transition: all 0.5s;
+            font-weight: 500;
+            padding: 0 10px;
+        }
+        
+        .section {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid var(--secondary-bg);
+        }
+        
+        .section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(138, 99, 210, 0.2);
+        }
+        
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 2px dotted var(--accent-light);
+            padding-bottom: 8px;
+            font-weight: 700;
+            transition: all 0.5s;
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+        
+        .seal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .seal-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: all 0.3s;
+            border: 2px solid var(--accent-light);
+            box-shadow: var(--shadow);
+        }
+        
+        .seal-img:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: var(--seal-shadow);
+            border-color: var(--accent-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent-color));
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1em;
+            box-shadow: 0 4px 10px rgba(138, 99, 210, 0.3);
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 15px rgba(138, 99, 210, 0.4);
+        }
+        
+        .btn-donate {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            box-shadow: 0 4px 10px rgba(255, 154, 158, 0.3);
+        }
+        
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            background: var(--secondary-bg);
+            padding: 10px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 2px solid var(--accent-light);
+            font-size: 0.9em;
+        }
+        
+        .social-link:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-1px);
+            border-color: var(--accent-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 15px;
+            color: var(--text-color);
+            font-size: 0.9em;
+            opacity: 0.8;
+            transition: all 0.5s;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1s; }
+        
+        .carousel {
+            position: relative;
+            height: auto;
+            min-height: 250px;
+            perspective: 1000px;
+            margin: 25px 0;
+        }
+        
+        .carousel-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+        
+        .carousel-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            backface-visibility: hidden;
+            transition: all 0.5s;
+            text-align: center;
+            border: 2px dashed var(--accent-light);
+        }
+        
+        .carousel-item h3 {
+            color: var(--accent-color);
+            font-size: 1.3em;
+            margin-bottom: 12px;
+        }
+        
+        .carousel-item p {
+            font-size: 0.95em;
+            padding: 0 10px;
+        }
+        
+        .carousel-nav {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .carousel-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--secondary-bg);
+            border-radius: 50%;
+            margin: 0 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid var(--accent-light);
+        }
+        
+        .carousel-dot.active {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
+            border-color: var(--accent-color);
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+            font-size: 0.95em;
+        }
+        
+        li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-size: 1.3em;
+            position: absolute;
+            left: -5px;
+            top: -2px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        @media (max-width: 600px) {
+            .logo {
+                max-width: 120px;
+            }
+            
+            h1 {
+                font-size: 1.7em;
+            }
+            
+            .subtitle {
+                font-size: 1em;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+            
+            h2 {
+                font-size: 1.3em;
+            }
+            
+            .btn {
+                padding: 10px 16px;
+                font-size: 0.9em;
+            }
+            
+            .seal-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .carousel-item h3 {
+                font-size: 1.2em;
+            }
+            
+            .carousel-item p {
+                font-size: 0.9em;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-switcher" id="themeSwitcher">
+        <div class="theme-icon">☀️</div>
+    </div>
 
-**Редакция от 31 марта 2025 года**  
-
-
-
-### **1. ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ**  
-
-1.1. **ПО (Программное обеспечение)** – программный комплекс, включающий Telegram-бота и терминальные решения $-Console.  
-
-1.2. **Пользователь** – физическое или юридическое лицо, использующее ПО в соответствии с данным соглашением.  
-
-1.3. **Лицензиар** – $-Console | QiwiFAN, правообладатель ПО.  
-
-1.4. **Незаконные действия** – любые операции, нарушающие законодательство РФ, включая мошенничество, отмывание денег и обход санкций.  
-
-
-
-### **2. ПРЕДМЕТ СОГЛАШЕНИЯ**  
-
-2.1. Лицензиар предоставляет Пользователю неисключительную, непередаваемую лицензию на использование ПО.  
-
-2.2. Использование ПО возможно только в рамках функционала, предусмотренного Лицензиаром.  
-
-
-
-### **3. ОГРАНИЧЕНИЯ И ЗАПРЕТЫ**  
-
-3.1. **Запрещено:**  
-
-- Модифицировать, декомпилировать или распространять изменённые версии ПО.  
-
-- Использовать уязвимости, баги или иные ошибки для получения финансовой выгоды.  
-
-- Совершать действия, направленные на обход лимитов, накрутку баланса или искажение статистики.  
-
-- Передавать доступ третьим лицам, в том числе через перепродажу аккаунтов.  
-
-- Использовать ПО для транзакций, связанных с:  
-
-  - Отмыванием денег (AML/CFT).  
-
-  - Торговлей запрещёнными товарами (наркотики, оружие).  
-
-  - Финансовыми пирамидами, мошенническими схемами.  
-
-
-
-3.2. **Обязанности Пользователя:**  
-
-- Незамедлительно сообщать о найденных уязвимостях.  
-
-- Обеспечивать конфиденциальность данных для входа.  
-
-- Соблюдать законодательство РФ и международные нормы.  
-
-
-
-### **4. ОТВЕТСТВЕННОСТЬ**  
-
-4.1. За нарушение условий соглашения Лицензиар вправе:  
-
-- Блокировать доступ без предупреждения.  
-
-- Требовать возмещения убытков.  
-
-- Передавать информацию в **Росфинмониторинг, Банк России и правоохранительные органы**.  
-
-
-
-4.2. Пользователь несёт полную ответственность за все операции, совершённые с его аккаунта.  
-
-
-
-### **5. ФОРС-МАЖОР**  
-
-5.1. Лицензиар не отвечает за ущерб, вызванный:  
-
-- Действиями хакеров или DDoS-атаками.  
-
-- Блокировками со стороны Telegram, QIWI, банков.  
-
-- Изменениями в законодательстве.  
-
-
-
-### **6. ЗАКЛЮЧИТЕЛЬНЫЕ ПОЛОЖЕНИЯ**  
-
-6.1. Соглашение вступает в силу с момента первого использования ПО.  
-
-6.2. Лицензиар оставляет за собой право изменять условия с уведомлением через официальные каналы.  
-
-6.3. Споры разрешаются в суде по месту регистрации Лицензиара.  
-
-
-
-**Приложение №1 – Реквизиты Лицензиара:**  
-
-Контакты: [https://t.me/miqyqiwi]
-
-
-Report content on this page
+    <div class="container">
+        <header>
+            <img src="https://i.pinimg.com/736x/b2/d9/3a/b2d93a528d443831f6dad952cf357c1a.jpg" alt="Тюлень miqyz" class="logo">
+            <h1>Привет! Я miqyz :3</h1>
+            <p class="subtitle">Разработчик, любитель тюленей и создатель uwufetch.sh</p>
+        </header>
+        
+        <div class="section delay-1">
+            <h2>Обо мне</h2>
+            <p>Приветствую на моём тюленьем сайте! Я miqyz - разработчик, который обожает тюленей и создаёт интересные проекты. В свободное время я люблю программировать, особенно на Bash, и конечно же, восхищаться этими прекрасными морскими созданиями.</p>
+            
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel">
+                    <div class="carousel-item" style="transform: rotateY(0deg) translateZ(250px)">
+                        <h3>Мои проекты</h3>
+                        <p>Разрабатываю скрипты и утилиты, включая uwufetch.sh - альтернативу neofetch с милыми тюленями!</p>
+                    </div>
+                    <div class="carousel-item" style="transform: rotateY(90deg) translateZ(250px)">
+                        <h3>Любовь к тюленям</h3>
+                        <p>Тюлени - самые милые существа на планете! Их пухлые тела и большие глаза дарят мне радость.</p>
+                    </div>
+                    <div class="carousel-item" style="transform: rotateY(180deg) translateZ(250px)">
+                        <h3>Bash-скрипты</h3>
+                        <p>Создаю полезные bash-скрипты для автоматизации и украшения рабочего процесса.</p>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <span class="carousel-dot active" data-index="0"></span>
+                    <span class="carousel-dot" data-index="1"></span>
+                    <span class="carousel-dot" data-index="2"></span>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <a href="https://t.me/miqyz_bio" class="btn">Больше обо мне</a>
+                <a href="https://www.donationalerts.com/r/miqyz" class="btn btn-donate">Поддержать</a>
+            </div>
+        </div>
+        
+        <div class="section delay-2">
+            <h2>Мои проекты</h2>
+            <p>Вот некоторые из моих проектов:</p>
+            <ul>
+                <li><strong>uwufetch.sh</strong> - милая альтернатива neofetch с тюленями</li>
+                <li><strong>seal-theme</strong> - темы для рабочих столов с тюленями</li>
+                <li><strong>bash-utils</strong> - коллекция полезных bash-скриптов</li>
+            </ul>
+            <p>Все проекты созданы с любовью, как и сами тюлени!</p>
+        </div>
+        
+        <div class="section delay-3">
+            <h2>Тюленья галерея</h2>
+            <p>Прекрасные создания, которые меня вдохновляют:</p>
+            
+            <div class="seal-gallery">
+                <!-- Оставлено пустое место для ваших изображений -->
+                <!-- Вы можете добавить свои изображения тюленей здесь -->
+                <!-- Пример: <img src="ваша_ссылка.jpg" alt="Тюлень" class="seal-img"> -->
+            </div>
+        </div>
+        
+        <div class="section delay-4">
+            <h2>Связь со мной</h2>
+            <p>Хотите обсудить тюленей или bash-скрипты? Я всегда рад!</p>
+            
+            <div class="social-links">
+                <a href="https://t.me/miqyz" class="social-link">@miqyz</a>
+                <a href="https://t.me/miqydev" class="social-link">@miqydev</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="delay-5">
+        <p>Сайт создан с любовью к тюленям и программированию © 2025 miqyz</p>
+    </footer>
+    
+    <script>
+        // Анимация карусели
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('carousel');
+            const dots = document.querySelectorAll('.carousel-dot');
+            let currentIndex = 0;
+            const itemCount = 3;
+            
+            function rotateCarousel() {
+                currentIndex = (currentIndex + 1) % itemCount;
+                updateCarousel();
+            }
+            
+            function updateCarousel() {
+                const angle = currentIndex * -120;
+                carousel.style.transform = `rotateY(${angle}deg)`;
+                
+                dots.forEach((dot, index) => {
+                    if (index === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    currentIndex = parseInt(this.getAttribute('data-index'));
+                    updateCarousel();
+                });
+            });
+            
+            setInterval(rotateCarousel, 5000);
+            
+            // Переключение темы
+            const themeSwitcher = document.getElementById('themeSwitcher');
+            const body = document.body;
+            const themeIcon = document.querySelector('.theme-icon');
+            
+            // Проверяем сохранённую тему
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                themeSwitcher.classList.add('active');
+                themeIcon.textContent = '🌙';
+            } else {
+                themeIcon.textContent = '☀️';
+            }
+            
+            themeSwitcher.addEventListener('click', function() {
+                body.classList.toggle('dark-mode');
+                themeSwitcher.classList.toggle('active');
+                
+                // Меняем иконку
+                const isDark = body.classList.contains('dark-mode');
+                themeIcon.textContent = isDark ? '🌙' : '☀️';
+                
+                // Сохраняем выбор темы
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        });
+    </script>
+</body>
+</html>
